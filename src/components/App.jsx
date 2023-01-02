@@ -34,10 +34,10 @@ class App extends Component {
     return (
       <Section>
         <Searchbar />
-        {/* <ImageGallery />
+        {/* <ImageGallery /> */}
         <Loader />
         <Button />
-        <Modal /> */}
+        {/* <Modal /> */}
       </Section>
     );
   }

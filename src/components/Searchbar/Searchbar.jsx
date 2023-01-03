@@ -34,7 +34,7 @@ class Searchbar extends Component {
           <SearchFormInput
             type="text"
             autocomplete="off"
-            autofocus
+            // autofocus
             placeholder="Search images and photos"
           />
         </SearchForm>

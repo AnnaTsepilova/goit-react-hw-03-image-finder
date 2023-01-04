@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { Overlay, ModalWindow } from 'components/Modal/Modal.styled';
 
 export default function Modal({}) {

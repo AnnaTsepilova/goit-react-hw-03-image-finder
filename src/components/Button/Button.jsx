@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { ButtonLoadMore } from 'components/Button/Button.styled';
 
 export default function Button({}) {

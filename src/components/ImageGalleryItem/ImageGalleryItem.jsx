@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import {
   ImageGalleryItemLi,
   ImageGalleryItemImage,
@@ -12,7 +12,7 @@ export default function ImageGalleryItem({}) {
   );
 }
 
-// ContactsList.propTypes = {
+// ImageGalleryItem.propTypes = {
 //   contacts: PropTypes.arrayOf(
 //     PropTypes.shape({
 //       id: PropTypes.string,

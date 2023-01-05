@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
-// import { nanoid } from 'nanoid';
+import PropTypes from 'prop-types';
 import {
   NotificationContainer,
   // NotificationManager,
@@ -12,45 +11,50 @@ import {
 
 import Section from 'components/Section/Section';
 import Searchbar from 'components/Searchbar/Searchbar';
-// import ImageGallery from 'components/ImageGallery/ImageGallery';
-import Loader from 'components/Loader/Loader';
-import Button from 'components/Button/Button';
+import ImageGallery from 'components/ImageGallery/ImageGallery';
+
 // import Modal from 'components/Modal/Modal';
 
 export default class App extends Component {
   static defaultProps = {};
 
   static propTypes = {
-    // contacts: PropTypes.array,
-    // filter: PropTypes.string,
+    searchQuery: PropTypes.string,
+    page: PropTypes.number,
   };
 
   state = {
     searchQuery: '',
+    page: 1,
   };
 
   handleFormSubmit = searchQuery => {
-    this.setState({ searchQuery });
-    console.log(this.state.searchQuery);
+    let page = this.state.page;
+    if (this.state.searchQuery !== searchQuery) {
+      page = 1;
+    }
+    this.setState({
+      searchQuery: searchQuery,
+      page: page,
+    });
   };
 
-  // componentDidMount() {
-  //   this.setState({ loading: true });
-  //   fetch(
-  //     'https://pixabay.com/api/?q=cat&page=1&key=31882982-4157c5a40df977384753c9618&image_type=photo&orientation=horizontal&per_page=12'
-  //   )
-  //     .then(res => res.json())
-  //     .then(photos => this.setState({ photos }))
-  //     .finally(() => this.setState({ loading: false }));
-  // }
+  handleOnClickLoadMoreBtn = event => {
+    event.preventDefault();
+    let page = this.state.page + 1;
+    this.setState({ page });
+  };
 
   render() {
     return (
       <Section>
         <Searchbar onSubmit={this.handleFormSubmit} />
-        {/* <ImageGallery /> */}
-        <Loader />
-        <Button />
+        <ImageGallery
+          searchQuery={this.state.searchQuery}
+          page={this.state.page}
+          loadMore={this.handleOnClickLoadMoreBtn}
+        />
+
         {/* <Modal /> */}
         <NotificationContainer />
       </Section>

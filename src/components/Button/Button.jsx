@@ -1,16 +1,14 @@
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { ButtonLoadMore } from 'components/Button/Button.styled';
 
-export default function Button({}) {
-  return <ButtonLoadMore>Load more</ButtonLoadMore>;
+export default function Button({ onClick }) {
+  return (
+    <ButtonLoadMore type="button" onClick={onClick}>
+      Load more
+    </ButtonLoadMore>
+  );
 }
 
-// Button.propTypes = {
-//   contacts: PropTypes.arrayOf(
-//     PropTypes.shape({
-//       id: PropTypes.string,
-//       name: PropTypes.string,
-//       number: PropTypes.string,
-//     })
-//   ).isRequired,
-// };
+Button.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};

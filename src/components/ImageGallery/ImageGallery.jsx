@@ -13,14 +13,12 @@ export default class ImageGallery extends Component {
     images: PropTypes.array,
     isLoading: PropTypes.bool,
     error: PropTypes.bool,
-    status: PropTypes.string,
   };
 
   state = {
     images: [],
     isLoading: false,
     error: null,
-    status: 'pending',
   };
 
   async componentDidUpdate(prevProps, prevState) {
@@ -63,31 +61,14 @@ export default class ImageGallery extends Component {
   }
 
   render() {
-    const { images, isLoading, status } = this.state;
+    const { images, isLoading } = this.state;
 
-    if (status === 'pending') {
-      return <Loader />;
-    }
-
-    if (status === 'resolved') {
-      return (
-        <>
-          <ImageGalleryList images={images} />
-          <Button onClick={this.props.loadMore} />
-        </>
-      );
-    }
-
-    if (status === 'rejected') {
-      return NotificationManager.error(`API error: server is not available`);
-    }
-
-    // return (
-    //   <>
-    //     <ImageGalleryList images={images} />
-    //     {isLoading && <Loader />}
-    //     {images.length > 0 && <Button onClick={this.props.loadMore} />}
-    //   </>
-    // );
+    return (
+      <>
+        <ImageGalleryList images={images} />
+        {isLoading && <Loader />}
+        {images.length > 0 && <Button onClick={this.props.loadMore} />}
+      </>
+    );
   }
 }

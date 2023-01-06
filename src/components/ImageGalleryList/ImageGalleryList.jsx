@@ -3,16 +3,18 @@ import PropTypes from 'prop-types';
 import { ImageGalleryContainer } from 'components/ImageGallery/ImageGallery.styled';
 import ImageGalleryItem from 'components/ImageGalleryItem/ImageGalleryItem';
 
-export default function ImageGalleryList({ images }) {
+export default function ImageGalleryList({ images, onModalOpen }) {
   //   console.log(images);
   //   console.log(typeof images);
   return (
     <ImageGalleryContainer>
-      {images.map(image => {
-        return (
-          <ImageGalleryItem key={image.id} image={image}></ImageGalleryItem>
-        );
-      })}
+      {images.map(image => (
+        <ImageGalleryItem
+          key={image.id}
+          img={image}
+          onModalOpen={onModalOpen}
+        />
+      ))}
     </ImageGalleryContainer>
   );
 }
@@ -23,4 +25,5 @@ ImageGalleryList.propTypes = {
       id: PropTypes.number,
     })
   ).isRequired,
+  onModalOpen: PropTypes.func.isRequired,
 };

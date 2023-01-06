@@ -19,7 +19,6 @@ ImageGalleryItem.propTypes = {
     PropTypes.shape({
       webformatURL: PropTypes.string,
       tags: PropTypes.string,
-      id: PropTypes.number,
     })
   ).isRequired,
 };

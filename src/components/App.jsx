@@ -12,7 +12,6 @@ import {
 import Section from 'components/Section/Section';
 import Searchbar from 'components/Searchbar/Searchbar';
 import ImageGallery from 'components/ImageGallery/ImageGallery';
-
 // import Modal from 'components/Modal/Modal';
 
 export default class App extends Component {
@@ -54,7 +53,6 @@ export default class App extends Component {
           page={this.state.page}
           loadMore={this.handleOnClickLoadMoreBtn}
         />
-
         {/* <Modal /> */}
         <NotificationContainer />
       </Section>

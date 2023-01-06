@@ -8,7 +8,7 @@ export const ImageGalleryContainer = styled.ul`
   margin-top: 0;
   margin-bottom: 0;
   padding-top: 24px;
-  padding-bottom: 24px;
+  padding-bottom: 34px;
 
   list-style: none;
   margin-left: auto;

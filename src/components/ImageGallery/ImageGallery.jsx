@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 import ImageGalleryList from 'components/ImageGalleryList/ImageGalleryList';
 import Loader from 'components/Loader/Loader';
-import FetchImages from 'api/Api';
+import FetchImages from 'services/GalleryApi';
 import Button from 'components/Button/Button';
 
 export default class ImageGallery extends Component {
@@ -20,6 +20,13 @@ export default class ImageGallery extends Component {
     isLoading: false,
     error: null,
   };
+
+  componentDidMount() {
+    const { searchQuery, page } = this.props;
+    if (searchQuery) {
+      FetchImages(searchQuery, page);
+    }
+  }
 
   async componentDidUpdate(prevProps, prevState) {
     let searchQuery = this.props.searchQuery;

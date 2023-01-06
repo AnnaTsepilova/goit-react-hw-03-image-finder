@@ -17,8 +17,8 @@ export default function ImageGalleryList({ images }) {
   );
 }
 
-ImageGalleryItem.propTypes = {
-  image: PropTypes.objectOf(
+ImageGalleryList.propTypes = {
+  images: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number,
     })

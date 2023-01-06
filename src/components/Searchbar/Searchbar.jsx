@@ -17,15 +17,10 @@ export default class Searchbar extends Component {
 
   static propTypes = {
     searchQuery: PropTypes.array,
-    // name: PropTypes.string,
-    // number: PropTypes.string,
   };
 
   state = {
     searchQuery: '',
-    // id: 0,
-    // webformatURL: '',
-    // largeImageURL: '',
   };
 
   handleSearchQuery = event => {

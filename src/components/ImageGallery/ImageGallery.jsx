@@ -1,5 +1,4 @@
 import { Component } from 'react';
-import { NotificationManager } from 'react-notifications';
 import { animateScroll as scroll } from 'react-scroll';
 import PropTypes from 'prop-types';
 
@@ -8,6 +7,7 @@ import Loader from 'components/Loader/Loader';
 import FetchImages from 'services/GalleryApi';
 import Button from 'components/Button/Button';
 import Modal from 'components/Modal/Modal';
+import { NotificationInfo, NotificationError } from 'services/Notification';
 
 const imagesPerPage = 12;
 
@@ -65,18 +65,16 @@ export default class ImageGallery extends Component {
           response.data.hits.length > 0 &&
           response.data.hits.length < imagesPerPage
         ) {
-          NotificationManager.info(
-            "We're sorry, but you've reached the end of search results."
-          );
+          NotificationInfo();
         }
 
         if (!response.data.hits.length) {
-          NotificationManager.error(
+          NotificationError(
             'Sorry, there are no images matching your search query. Please try again.'
           );
         }
       } catch (error) {
-        NotificationManager.error(`API error: ${error.message}`);
+        NotificationError(`API error: ${error.message}`);
         this.setState({ isLoading: false });
       }
     }

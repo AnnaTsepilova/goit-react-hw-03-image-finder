@@ -7,7 +7,7 @@ import Loader from 'components/Loader/Loader';
 import FetchImages from 'services/GalleryApi';
 import Button from 'components/Button/Button';
 import Modal from 'components/Modal/Modal';
-import { NotificationInfo, NotificationError } from 'services/Notification';
+import * as Notify from 'services/Notify';
 
 const imagesPerPage = 12;
 
@@ -65,16 +65,14 @@ export default class ImageGallery extends Component {
           response.data.hits.length > 0 &&
           response.data.hits.length < imagesPerPage
         ) {
-          NotificationInfo();
+          Notify.NotificationInfo(Notify.INFO_MESSAGE);
         }
 
         if (!response.data.hits.length) {
-          NotificationError(
-            'Sorry, there are no images matching your search query. Please try again.'
-          );
+          Notify.NotificationError(Notify.NO_FOUND_MESSAGE);
         }
       } catch (error) {
-        NotificationError(`API error: ${error.message}`);
+        Notify.NotificationError(`${Notify.ERROR_MESSAGE} ${error.message}`);
         this.setState({ isLoading: false });
       }
     }
